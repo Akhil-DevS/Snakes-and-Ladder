@@ -1,4 +1,5 @@
-%standard snake and ladder
+%PROGRAM 1 of readme.
+%standard snake and ladder.
 clear all; close all; clc;
 row=101;
 col=101;
@@ -120,13 +121,7 @@ for i=1:100
         q(i,k)=p(i,k);
     end
 end
-
-
-
-
-
 Id=eye(100,100);
-
 M=Id-q;
 inverse_m=inv(M);
 sum=0;
