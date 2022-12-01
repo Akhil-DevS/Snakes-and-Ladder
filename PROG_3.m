@@ -1,10 +1,10 @@
+
+
 clear all
-%tables=cell(1,1000);
 plot_data=cell(1,1001);
 for N=1:1000
 N
 N_ladder=randsample(50,1);
-%ladder_number(N)=N_ladder;
 r=50-N_ladder;
 if r==0
     N_snakes=0;
@@ -135,12 +135,10 @@ for M=1:1000
         elseif step==100
             flag=1;
         end
-        %flag=1;
-    end
+       end
     end
     cnt(M,1)=count;
 end
-%tables{1,N}=tabulate(cnt);
 avg_steps(N)=mean(cnt);
 
 plot_data{1,N}={N_ladder,mean(cnt)}
@@ -150,31 +148,7 @@ N_ladder=0
 ladder_number(N+1)=N_ladder;
 N_snakes=randsample(50,1)
 pos=randperm(100,N_ladder*2);
-pos_sort=sort(pos);
-%{
-for i=1:N_ladder
-    pos_start(i)=pos_sort(i);
-end
-for i=1:N_ladder
-    pos_end(i)=pos_sort(i+N_ladder);
-end
-f_ladder=randsample(pos_start,N_ladder);
-g_ladder=randsample(pos_end,N_ladder);
-k=0;
-for i=1:100
-    
-    flag=0;
-    for j=1:length(pos_sort)
-        if i==pos_sort(j)
-            flag=1;
-        end
-    end
-    if flag == 0
-        k=k+1;
-        pos_remain(k)=i;
-    end
-end
-%}        
+pos_sort=sort(pos);        
 pos_snake=randsample(100,N_snakes*2);
 pos_snake_sort=sort(pos_snake);
 for i=1:N_snakes
@@ -191,9 +165,6 @@ f=pos_start_snakes;
 %end
 
 g=pos_end_snake;
-%for i=1:length(pos_end_snake)
-   % g(end+1)=pos_end_snake(i);
-%end
 
 for M=1:1000
     count=0;
@@ -201,7 +172,7 @@ for M=1:1000
     flag=0;
     start=0;
     while flag==0
-        %flag=1
+      
         count=count+1;
         die=randsample(6,1);
          if die ==6 && start==0
@@ -269,7 +240,6 @@ for M=1:1000
         elseif step==100
             flag=1;
         end
-        %flag=1;
     end
     end
     cnt(M,1)=count;
@@ -279,5 +249,4 @@ tables{1,N}=tabulate(cnt);
 avg_steps(N)=mean(cnt);
 table_avg=tabulate(round(avg_steps))
 plot_data{1,N}={N_ladder,round(mean(cnt))}
-%save('tables_avg','table_avg')
 save('plot_data','plot_data')
